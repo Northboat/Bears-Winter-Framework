@@ -29,7 +29,14 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
     @Override
     public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
-        return null;
+        Map<String, T> result = new HashMap<>();
+        beanDefinitionMap.forEach((beanName, beanDefinition) -> {
+           Class<?> beanClass = beanDefinition.getBeanClass();
+           if(type.isAssignableFrom(beanClass)){
+               result.put(beanName, (T) getBean(beanName));
+           }
+        });
+        return result;
     }
 
     @Override
@@ -44,5 +51,11 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
             throw new BeansException("No bean named '" + beanName + "' is defined" );
         }
         return beanDefinition;
+    }
+
+    // 实例化所有记录在案的 Bean
+    @Override
+    public void preInstantiateSingletons() throws BeansException {
+        beanDefinitionMap.keySet().forEach(this::getBean);
     }
 }

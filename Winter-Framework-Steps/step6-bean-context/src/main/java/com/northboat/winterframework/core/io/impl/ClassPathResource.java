@@ -1,6 +1,7 @@
 package com.northboat.winterframework.core.io.impl;
 
 import com.northboat.winterframework.core.io.Resource;
+import com.northboat.winterframework.utils.ClassUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.io.InputStream;
 public class ClassPathResource implements Resource {
 
     private final String path;
-    private final ClassLoader classLoader;
+    private ClassLoader classLoader;
 
     public ClassPathResource(String path) {
         this(path, (ClassLoader) null);
@@ -18,7 +19,7 @@ public class ClassPathResource implements Resource {
 
     public ClassPathResource(String path, ClassLoader classLoader) {
         this.path = path;
-        this.classLoader = (classLoader != null ? classLoader : ClassLoader.getSystemClassLoader());
+        this.classLoader = classLoader != null ? classLoader : ClassUtils.getDefaultClassLoader();
     }
 
     @Override

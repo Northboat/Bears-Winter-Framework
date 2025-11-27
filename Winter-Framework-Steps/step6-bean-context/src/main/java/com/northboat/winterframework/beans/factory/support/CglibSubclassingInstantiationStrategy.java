@@ -1,6 +1,5 @@
 package com.northboat.winterframework.beans.factory.support;
 
-
 import com.northboat.winterframework.beans.BeansException;
 import com.northboat.winterframework.beans.factory.config.BeanDefinition;
 import net.sf.cglib.proxy.Enhancer;

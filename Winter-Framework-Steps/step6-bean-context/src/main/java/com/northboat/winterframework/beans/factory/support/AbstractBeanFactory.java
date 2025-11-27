@@ -3,11 +3,17 @@ package com.northboat.winterframework.beans.factory.support;
 import com.northboat.winterframework.beans.BeansException;
 import com.northboat.winterframework.beans.factory.BeanFactory;
 import com.northboat.winterframework.beans.factory.config.BeanDefinition;
+import com.northboat.winterframework.beans.factory.config.BeanPostProcessor;
+import com.northboat.winterframework.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // 继承 DefaultSingletonBeanRegistry，继承了单例 Bean 的注册和获取逻辑
 // 实现 BeanFactory getBean 接口逻辑，具体的 getBeanDefinition 和 createBean 都是抽象方法，由子类实现
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
     // 实现 BeanFactory 的 getBean 接口
     @Override
     public Object getBean(String beanName){
@@ -42,4 +48,15 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     // 根据入参 args 创建 Object 并存入单例的 Map 中
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object... args) throws BeansException;
+
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor){
+        this.beanPostProcessors.remove(beanPostProcessor);
+        this.beanPostProcessors.add(beanPostProcessor);
+    }
+
+    public List<BeanPostProcessor> getBeanPostProcessors(){
+        return beanPostProcessors;
+    }
 }
