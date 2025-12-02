@@ -15,6 +15,9 @@
         <module>step4-property-injection</module>
         <module>step5-resource-loader</module>
         <module>step6-bean-context</module>
+        <module>step7-init-destroy</module>
+        <module>step8-factory-context-aware</module>
+        <module>step9-custom-bean</module>
     </modules>
 
 
