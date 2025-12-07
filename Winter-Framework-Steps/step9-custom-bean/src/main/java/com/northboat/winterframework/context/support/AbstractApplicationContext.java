@@ -2,11 +2,8 @@ package com.northboat.winterframework.context.support;
 
 import com.northboat.winterframework.beans.BeansException;
 import com.northboat.winterframework.beans.factory.ConfigurableListableBeanFactory;
-import com.northboat.winterframework.beans.factory.config.BeanDefinition;
 import com.northboat.winterframework.beans.factory.config.BeanFactoryPostProcessor;
 import com.northboat.winterframework.beans.factory.config.BeanPostProcessor;
-import com.northboat.winterframework.beans.factory.config.ConfigurableBeanFactory;
-import com.northboat.winterframework.beans.factory.support.ApplicationContextAwareProcessor;
 import com.northboat.winterframework.context.ConfigurableApplicationContext;
 import com.northboat.winterframework.core.io.DefaultResourceLoader;
 

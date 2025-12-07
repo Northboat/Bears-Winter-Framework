@@ -1,7 +1,7 @@
-package com.northboat.winterframework.beans.factory.support;
+package com.northboat.winterframework.context.support;
 
 import com.northboat.winterframework.beans.BeansException;
-import com.northboat.winterframework.beans.factory.ApplicationContextAware;
+import com.northboat.winterframework.context.ApplicationContextAware;
 import com.northboat.winterframework.beans.factory.config.BeanPostProcessor;
 import com.northboat.winterframework.context.ApplicationContext;
 

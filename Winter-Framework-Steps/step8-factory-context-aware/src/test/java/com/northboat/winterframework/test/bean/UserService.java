@@ -4,6 +4,7 @@ package com.northboat.winterframework.test.bean;
 import com.northboat.winterframework.beans.BeansException;
 import com.northboat.winterframework.beans.factory.*;
 import com.northboat.winterframework.context.ApplicationContext;
+import com.northboat.winterframework.context.ApplicationContextAware;
 
 public class UserService implements BeanNameAware, BeanClassLoaderAware, ApplicationContextAware, BeanFactoryAware {
 
