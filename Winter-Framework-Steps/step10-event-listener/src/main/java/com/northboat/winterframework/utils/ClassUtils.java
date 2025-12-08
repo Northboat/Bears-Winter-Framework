@@ -15,4 +15,8 @@ public class ClassUtils {
         }
         return cl;
     }
+
+    public static boolean isCglibProxyClass(Class<?> clazz) {
+        return (clazz != null && clazz.getName().contains("$$"));
+    }
 }
